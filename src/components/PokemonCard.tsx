@@ -7,30 +7,50 @@ import {
   Dimensions,
   Image,
 } from 'react-native';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { SimplePokemon } from '../interfaces/pokemonInterfaces';
 import { FadeInImage } from './FadeInImage';
 
 import { getPalette } from '@somesoap/react-native-image-palette';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { RootStackParams } from '../navigator/Navigator';
 const windowWidth = Dimensions.get('window').width;
 const PokemonCard = ({ pokemon }: { pokemon: SimplePokemon }) => {
+  const navigation = useNavigation<NavigationProp<RootStackParams>>();
   const [bgColor, setBgColor] = useState('grey');
+  const isMounted = useRef(true);
   useMemo(
     async function () {
       try {
-        const colors = await getPalette(pokemon.picture);
+        if (isMounted.current) {
+          const colors = await getPalette(pokemon.picture);
 
-        setBgColor(colors.muted);
+          setBgColor(colors.muted);
+        }
       } catch (error) {
         setBgColor('grey');
       }
     },
     [pokemon.picture],
   );
+  useEffect(() => {
+    return () => {
+      isMounted.current = false;
+      return;
+    };
+  }, []);
 
   return (
     <>
-      <TouchableOpacity activeOpacity={0.8}>
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={() =>
+          navigation.navigate('PokemonScreen', {
+            simplePokemon: pokemon,
+            color: bgColor,
+          })
+        }
+      >
         <View
           style={{
             ...styles.cardContainer,

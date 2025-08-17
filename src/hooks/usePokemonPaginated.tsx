@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { pokemonApi } from '../pokemonApi';
+import { pokemonApi } from '../api/pokemonApi';
 import {
   PokemonPaginatedResponse,
   Result,
