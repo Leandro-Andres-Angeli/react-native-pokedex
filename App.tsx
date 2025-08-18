@@ -8,6 +8,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
 import Navigator from './src/navigator/Navigator';
+import Tabs from './src/navigator/Tabs';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -16,7 +17,8 @@ function App() {
     <NavigationContainer>
       <View style={styles.container}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <Navigator />
+        <Tabs />
+        {/* <Navigator /> */}
       </View>
     </NavigationContainer>
   );

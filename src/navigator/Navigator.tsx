@@ -11,7 +11,10 @@ const Stack = createNativeStackNavigator<RootStackParams>();
 
 const Navigator = () => {
   return (
-    <Stack.Navigator initialRouteName="HomeScreen">
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="HomeScreen"
+    >
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="PokemonScreen" component={PokemonScreen} />
     </Stack.Navigator>
