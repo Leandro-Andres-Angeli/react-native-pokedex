@@ -7,7 +7,7 @@
 
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import Navigator from './src/navigator/Navigator';
+import Navigator from './src/navigator/Tab1';
 import Tabs from './src/navigator/Tabs';
 
 function App() {

@@ -1,9 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import SearchScreen from '../screens/SearchScreen';
-import Navigator from './Navigator';
+
 import Icon from 'react-native-vector-icons/Ionicons';
+import Tab2 from './Tab2';
+import Tab1 from './Tab1';
 
 const Tab = createBottomTabNavigator();
 const TabIcon = ({ color, name }: { color: string; name: string }) => (
@@ -34,9 +35,18 @@ const Tabs = () => {
 
           tabBarIcon: ({ color }) => TabIcon({ color, name: 'list-outline' }),
         }}
-        component={Navigator}
+        component={Tab1}
       />
       <Tab.Screen
+        name="Search"
+        options={{
+          tabBarLabel: 'Buscar',
+
+          tabBarIcon: ({ color }) => TabIcon({ color, name: 'search-outline' }),
+        }}
+        component={Tab2}
+      />
+      {/* <Tab.Screen
         name="SearchScreen"
         options={{
           tabBarLabel: 'Buscar',
@@ -44,7 +54,7 @@ const Tabs = () => {
           tabBarIcon: ({ color }) => TabIcon({ color, name: 'search-outline' }),
         }}
         component={SearchScreen}
-      />
+      /> */}
     </Tab.Navigator>
   );
 };
