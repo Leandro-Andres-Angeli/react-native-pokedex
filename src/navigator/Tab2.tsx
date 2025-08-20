@@ -1,24 +1,23 @@
-import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from '../screens/HomeScreen';
-import PokemonScreen from '../screens/PokemonScreen';
 import { SimplePokemon } from '../interfaces/pokemonInterfaces';
+import SearchScreen from '../screens/SearchScreen';
+import PokemonScreen from '../screens/PokemonScreen';
+
 export type RootStackParams = {
-  HomeScreen: undefined;
+  SearchScreen: undefined;
   PokemonScreen: { simplePokemon: SimplePokemon; color: string };
 };
 const Stack = createNativeStackNavigator<RootStackParams>();
 
-const Navigator = () => {
+const Tab2 = () => {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName="HomeScreen"
+      initialRouteName="SearchScreen"
     >
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="SearchScreen" component={SearchScreen} />
       <Stack.Screen name="PokemonScreen" component={PokemonScreen} />
     </Stack.Navigator>
   );
 };
-
-export default Navigator;
+export default Tab2;
