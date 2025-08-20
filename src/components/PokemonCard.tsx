@@ -13,7 +13,7 @@ import { FadeInImage } from './FadeInImage';
 
 import { getPalette } from '@somesoap/react-native-image-palette';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { RootStackParams } from '../navigator/Navigator';
+import { RootStackParams } from '../navigator/Tab1';
 const windowWidth = Dimensions.get('window').width;
 const PokemonCard = ({ pokemon }: { pokemon: SimplePokemon }) => {
   const navigation = useNavigation<NavigationProp<RootStackParams>>();
